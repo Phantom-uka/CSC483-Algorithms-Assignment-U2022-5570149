@@ -1,7 +1,3 @@
-private static final int RUNS = 5;
-private static final int MAX_RANDOM_VALUE = 100000;
-private static final int DUPLICATE_RANGE = 10;
-
 import java.util.Random;
 
 /**
@@ -10,6 +6,11 @@ import java.util.Random;
  * using execution time, comparisons, and swaps/assignments.
  */
 public class SortingBenchmark {
+
+    private static final int RUNS = 5;
+    private static final int MAX_RANDOM_VALUE = 100000;
+    private static final int DUPLICATE_RANGE = 10;
+    private static final int NEARLY_SORTED_SWAP_DIVISOR = 10;
 
     static Random random = new Random();
 
@@ -80,9 +81,9 @@ public class SortingBenchmark {
             totalSwaps += stats.swaps;
         }
 
-        double avgTime = totalTime / 5.0 / 1_000_000.0;
-        long avgComparisons = totalComparisons / 5;
-        long avgSwaps = totalSwaps / 5;
+        double avgTime = totalTime / (double) RUNS / 1_000_000.0;
+        long avgComparisons = totalComparisons / RUNS;
+        long avgSwaps = totalSwaps / RUNS;
 
         System.out.println("Insertion Sort:");
         System.out.println("Average Time: " + avgTime + " ms");
@@ -101,7 +102,7 @@ public class SortingBenchmark {
         long totalComparisons = 0;
         long totalSwaps = 0;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < RUNS; i++) {
             int[] copy = data.clone();
             SortStats stats = new SortStats();
 
@@ -114,9 +115,9 @@ public class SortingBenchmark {
             totalSwaps += stats.swaps;
         }
 
-        double avgTime = totalTime / 5.0 / 1_000_000.0;
-        long avgComparisons = totalComparisons / 5;
-        long avgSwaps = totalSwaps / 5;
+        double avgTime = totalTime / (double) RUNS / 1_000_000.0;
+        long avgComparisons = totalComparisons / RUNS;
+        long avgSwaps = totalSwaps / RUNS;
 
         System.out.println("Merge Sort:");
         System.out.println("Average Time: " + avgTime + " ms");
@@ -135,7 +136,7 @@ public class SortingBenchmark {
         long totalComparisons = 0;
         long totalSwaps = 0;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < RUNS; i++) {
             int[] copy = data.clone();
             SortStats stats = new SortStats();
 
@@ -148,9 +149,9 @@ public class SortingBenchmark {
             totalSwaps += stats.swaps;
         }
 
-        double avgTime = totalTime / 5.0 / 1_000_000.0;
-        long avgComparisons = totalComparisons / 5;
-        long avgSwaps = totalSwaps / 5;
+        double avgTime = totalTime / (double) RUNS / 1_000_000.0;
+        long avgComparisons = totalComparisons / RUNS;
+        long avgSwaps = totalSwaps / RUNS;
 
         System.out.println("Quick Sort:");
         System.out.println("Average Time: " + avgTime + " ms");
@@ -167,7 +168,7 @@ public class SortingBenchmark {
     public static int[] generateRandom(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
-            arr[i] = random.nextInt(100000);
+            arr[i] = random.nextInt(MAX_RANDOM_VALUE);
         }
         return arr;
     }
@@ -211,7 +212,7 @@ public class SortingBenchmark {
         int[] arr = generateSorted(size);
 
         // Use 10% swaps to make the data nearly sorted
-        int swaps = size / 10;
+        int swaps = size / NEARLY_SORTED_SWAP_DIVISOR;
         for (int i = 0; i < swaps; i++) {
             int index1 = random.nextInt(size);
             int index2 = random.nextInt(size);
@@ -234,7 +235,7 @@ public class SortingBenchmark {
     public static int[] generateManyDuplicates(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
-            arr[i] = random.nextInt(10);
+            arr[i] = random.nextInt(DUPLICATE_RANGE);
         }
         return arr;
     }
