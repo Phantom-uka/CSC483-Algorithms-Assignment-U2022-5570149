@@ -67,7 +67,7 @@ public class SortingBenchmark {
         long totalComparisons = 0;
         long totalSwaps = 0;
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < RUNS; i++) {
             int[] copy = data.clone();
             SortStats stats = new SortStats();
 
