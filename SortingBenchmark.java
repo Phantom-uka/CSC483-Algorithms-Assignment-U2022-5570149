@@ -20,7 +20,7 @@ public class SortingBenchmark {
      * @param args command-line arguments
      */
     public static void main(String[] args) {
-        int[] sizes = {100000};
+        int[] sizes = {100, 1000, 10000, 100000};
 
         for (int size : sizes) {
             System.out.println("==================================================");
