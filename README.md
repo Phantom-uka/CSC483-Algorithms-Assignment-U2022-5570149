@@ -4,12 +4,15 @@ CSC 483 assignment - searching and sorting algorithms
 This project contains Java implementations of searching and sorting algorithms for CSC 483.
 
 ## Files
-- Product.java
-- SearchUtils.java
-- HybridSearch.java
-- Main.java
-- SortStats.java
-- SortingBenchmark.java
+- src/com/csc483/assignment1/search/Product.java
+- src/com/csc483/assignment1/search/SearchUtils.java
+- src/com/csc483/assignment1/search/HybridSearch.java
+- src/com/csc483/assignment1/search/Main.java
+- src/com/csc483/assignment2/sorting/SortStats.java
+- src/com/csc483/assignment2/sorting/SortingBenchmark.java
+- src/com/csc483/tests/SearchUtilsTest.java
+- src/com/csc483/tests/HybridSearchTest.java
+- src/com/csc483/tests/SortingBenchmarkTest.java
 
 ## Searching Algorithms
 - Sequential Search
@@ -22,27 +25,28 @@ This project contains Java implementations of searching and sorting algorithms f
 - Quick Sort
 
 ## Compilation Instructions
-javac *.java
+javac -d . src/com/csc483/assignment1/search/*.java src/com/csc483/assignment2/sorting/*.java
 
 ## Execution Instructions
 Run Question 1:
-java Main
+java com.csc483.assignment1.search.Main
 
 Run Question 2:
-java SortingBenchmark
+java com.csc483.assignment2.sorting.SortingBenchmark
 
 ## Dependencies
 - Java 11 or higher
+- JUnit 5 (for test classes)
 
 ## Sample Usage
-Run Main.java for Question 1 search tests.
-Run SortingBenchmark.java for Question 2 sorting benchmarks.
-
-## Known Limitations
-Performance results may vary depending on device speed and input size.
+Run Main for Question 1 search tests.
+Run SortingBenchmark for Question 2 sorting benchmarks.
 
 ## Testing
 JUnit test files included:
 - SearchUtilsTest.java
 - HybridSearchTest.java
 - SortingBenchmarkTest.java
+
+## Known Limitations
+Performance results may vary depending on device speed and input size.
